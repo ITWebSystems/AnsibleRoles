@@ -1,14 +1,10 @@
-# Playbook to call multiple roles to configure systems
-- name: Configure systems
-  hosts: 3.80.159.108
-  become: yes
-
+---
+- hosts: 10.10.10.52
+  become: true
   tasks:
-
-- name: Call Roles
-  hosts: servers
-  roles:
-   #- hostname
-   #- firewalld
-   #- ntp-config
-   - motd
+    - name: test
+      apt:
+        name: "*"
+        state: latest
+        update_cache: yes
+        force_apt_get: yes
